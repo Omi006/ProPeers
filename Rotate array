@@ -1,0 +1,22 @@
+public static ArrayList<Integer> rotateArray(ArrayList<Integer> arr, int k) {
+    k = k % arr.size();
+    if (k < 0) {
+        k = k + arr.size();
+    }
+    reverse(arr, 0, k - 1);
+        reverse(arr, k, arr.size() - 1);
+        reverse(arr, 0, arr.size() - 1);
+        return arr;
+}
+
+public static void reverse(ArrayList<Integer> arr, int low, int high) {
+    while (low < high) {
+        // Swap elements at low and high indices
+        int temp = arr.get(low);
+        arr.set(low, arr.get(high));
+        arr.set(high, temp);
+        
+        low++;
+        high--;
+    }
+}
