@@ -1,0 +1,22 @@
+public class Solution {
+
+	public static int arrayEquilibriumIndex(int[] arr){  
+		//Your code goes here
+		if(arr.length-1==0){
+			return -1;
+		}
+		int[] sum = new int[arr.length];
+		sum[0] = arr[0];
+		for(int i=1; i<arr.length; i++){
+            sum[i] = sum[i-1]+arr[i];
+		}
+		for(int i=0; i<arr.length; i++){
+			int lsum =sum[i]-arr[i];
+			int rsum = sum[sum.length-1]-sum[i];
+			if(lsum == rsum){
+				return i;
+			}
+		}
+		return -1;
+	}
+}
